@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Камень-симулятор</title>
+<style>
+body {
+  margin: 0;
+  overflow: hidden; /* Предотвращает прокрутку */
+  background-color: #f0f0f0; /* Светло-серый фон */
+}
+
+#glav {
+  width: 100%;
+  height: auto;
+  max-width: 100%; /* Адаптация под размеры экрана */
+  max-height: 100%;
+}
+
+#chatButton {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#timer {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 18px;
+}
+</style>
+</head>
+<body>
+
+<img id="glav" src="Glav.jpg" alt="Камень">
+<button id="chatButton">Чат</button>
+<div id="timer">00:00:00</div>
+
+<audio id="natureSound" loop>
+  <source src="nature.mp3" type="audio/mpeg">
+  Ваш браузер не поддерживает HTML5 audio.
+</audio>
+
+<script>
+const natureSound = document.getElementById('natureSound');
+natureSound.play();
+
+let startTime = new Date();
+let timerInterval;
+
+function updateTimer() {
+  const now = new Date();
+  const timeDiff = now - startTime;
+  const seconds = Math.floor((timeDiff / 1000) % 60);
+  const minutes = Math.floor((timeDiff / (1000 * 60)) % 60);
+  const hours = Math.floor((timeDiff / (1000 × 60 × 60)) % 24);
+
+  const formattedTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  document.getElementById('timer').textContent = formattedTime;
+}
+
+timerInterval = setInterval(updateTimer, 1000);
+
+
+// Кнопка "Чат" (Пока без функциональности)
+document.getElementById('chatButton').addEventListener('click', () => {
+  alert('Функция чата пока не реализована.');
+});
+
+</script>
+
+</body>
+</html>
