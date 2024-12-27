@@ -14,6 +14,7 @@ body {
   height: auto;
   max-width: 100%; /* Адаптация под размеры экрана */
   max-height: 100%;
+  display: block; /* Убирает пробел под изображением */
 }
 
 #chatButton {
@@ -37,7 +38,7 @@ body {
 </head>
 <body>
 
-<img id="glav" src="Glav.jpg" alt="Камень">
+<img id="glav" src="https://plyqo.github.io/-/glav.jpg" alt="Камень">
 <button id="chatButton">Чат</button>
 <div id="timer">00:00:00</div>
 
@@ -66,12 +67,10 @@ function updateTimer() {
 
 timerInterval = setInterval(updateTimer, 1000);
 
-
 // Кнопка "Чат" (Пока без функциональности)
 document.getElementById('chatButton').addEventListener('click', () => {
   alert('Функция чата пока не реализована.');
 });
-
 </script>
 
 </body>
